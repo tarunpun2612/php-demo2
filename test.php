@@ -8,4 +8,5 @@ if ($output === "Hello CI/CD World") {
 }
 
 echo "Test Failed";
+
 exit(1);
