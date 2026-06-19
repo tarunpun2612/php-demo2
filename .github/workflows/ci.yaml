@@ -34,6 +34,16 @@ jobs:
     needs: build # Only runs if tests pass
     runs-on: self-hosted
     steps:
+      - name: Force Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: List files to verify
+        run: |
+          echo "Files in workspace:"
+          ls -R
+      
       - name: Copy files to Web Directory
         run: |
           echo "Current directory is: $PWD"
