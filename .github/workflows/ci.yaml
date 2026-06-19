@@ -36,6 +36,5 @@ jobs:
     steps:
       - name: Copy files to Web Directory
         run: |
-          # Copy everything from current runner directory to your local web server
-          rsync -avz --exclude='.git' ./ /var/www/html/my-php-app/
+         sudo rsync -av --delete ${{ github.workspace }}/ /var/www/html/my-php-app/
           echo "Deployment successful!"
