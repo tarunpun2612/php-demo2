@@ -29,3 +29,13 @@ jobs:
 
       - name: Run Tests
         run: php test.php
+
+  deploy:
+    needs: build # Only runs if tests pass
+    runs-on: self-hosted
+    steps:
+      - name: Copy files to Web Directory
+        run: |
+          # Copy everything from current runner directory to your local web server
+          rsync -avz --exclude='.git' ./ /var/www/html/my-php-app/
+          echo "Deployment successful!"
